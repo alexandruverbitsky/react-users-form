@@ -2,17 +2,33 @@
 import { React, useState } from "react";
 import { Card } from "../UI/Card";
 import { Button } from "../UI/Button";
-import classes from './AddUser.module.css'
+import classes from "./AddUser.module.css";
 
+const defaultUserInput = {
+  userName: "",
+  age: "",
+};
 export const AddUser = (props) => {
-  const [userInput, setUserInput] = useState({
-    userName: "",
-    age: 0,
-  });
+  const [userInput, setUserInput] = useState(defaultUserInput);
 
   const addUserHandler = (event) => {
     event.preventDefault();
     //.. level up userInput state
+
+    if (
+      userInput.userName.trim().length === 0 ||
+      userInput.age.toString().trim().length === 0
+    ) {
+      return;
+    }
+    if (+userInput.age < 1) {
+      return;
+    }
+      
+      console.log(userInput);
+      
+    props.onAddUser(userInput);  
+    setUserInput(defaultUserInput);
   };
 
   const inputChangeHandler = (input, value) => {

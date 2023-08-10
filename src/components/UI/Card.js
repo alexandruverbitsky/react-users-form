@@ -1,10 +1,11 @@
 // @flow 
 import * as React from 'react';
+import classes from './Card.module.css'
 
 export const Card = (props) => {
     return (
-        <div>
-            
+        <div className={`${classes.card} ${props.className}`}>
+            {props.children}
         </div>
     );
 };

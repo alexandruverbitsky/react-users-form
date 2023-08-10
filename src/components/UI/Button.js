@@ -1,10 +1,15 @@
-// @flow 
-import * as React from 'react';
+// @flow
+import * as React from "react";
+import classes from "./Button.module.css";
 
 export const Button = (props) => {
-    return (
-        <div>
-            
-        </div>
-    );
+  return (
+    <button
+      className={classes.button}
+      type={props.type || "button"}
+      onClick={props.onClick}
+    >
+      {props.children}
+    </button>
+  );
 };
